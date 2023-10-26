@@ -1,0 +1,48 @@
+{
+    "Name": "Template",
+    "Looped": false,
+    "IgnorePlayed": false,
+    "InitCmds": [],
+    "InitLinger": 1500,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 0,
+                    "Color": {
+                        "H": 360,
+                        "S": 100,
+                        "B": 100,
+                        "K": 1
+                    },
+                    "ColorMax": {
+                        "H": 360,
+                        "S": 100,
+                        "B": 100,
+                        "K": 1
+                    },
+                    "ColorRndMode": 0,
+                    "Len": 100
+                },
+                {
+                    "Zone": 0,
+                    "AllZ": false,
+                    "Type": 1,
+                    "Trans": false,
+                    "Len": 500,
+                    "Rep": 10,
+                    "Skew": 0.5,
+                    "Wave": 0,
+                    "Color": "#dd0000"
+                }
+            ],
+            "Linger": 100,
+            "LingerMax": null,
+            "RndNext": false,
+            "RndBlock": false,
+            "Played": false
+        }
+    ]
+}

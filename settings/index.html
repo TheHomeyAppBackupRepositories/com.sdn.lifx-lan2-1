@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+
+<head>
+  <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+  <style>
+    h1 {
+      text-align: center;
+      text-decoration: underline;
+      text-shadow: 1px 1px silver;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="pageTitleContent" data-i18n="settings.title"></h1>
+  <fieldset style="background-color: rgb(234, 255, 224);">
+    <legend data-i18n="settings.directSettings"></legend>
+    <div class="field row">
+      <label for="defaultTransitionDuration" data-i18n="settings.defaultTransitionDuration"></label>
+      <input id="defaultTransitionDuration" type="number" value="" />
+    </div>
+    <br />
+    <hr />
+    <div class="field row">
+      <label for="cloudApiToken" data-i18n="settings.cloudApiToken"></label>
+      <input id="cloudApiToken" type="password" value="" />
+      <div style="font-size:xx-small;">
+        <a href="https://cloud.lifx.com/settings" target="_blank" data-i18n="settings.cloudApiTokenInfo"></a>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset style="background-color: rgb(255, 227, 227);">
+    <legend data-i18n="settings.advancedSettings"></legend>
+    <div class="field row">
+      <label for="logicBehavior" data-i18n="settings.logicBehavior"></label>
+      <select id="logicBehavior">
+        <option value="Legacy">Original</option>
+        <option value="LIFX">LIFX</option>
+        <option value="Athom">Athom</option>
+      </select>
+      <div style="font-size:xx-small;" data-i18n="settings.logicBehaviorInfo">
+      </div>
+    </div>
+    <hr>
+    <div class="field row">
+      <label for="kelvinBehavior" data-i18n="settings.kelvinBehavior"></label>
+      <select id="kelvinBehavior">
+        <option value="LIFX">LIFX</option>
+        <option value="ADOBE">Adobe Photoshop</option>
+        <option value="IGNORE" data-i18n="settings.kelvinBehaviorAdvanced">Advanced</option>
+      </select>
+      <div style="font-size:xx-small;" data-i18n="settings.kelvinBehaviorInfo">
+      </div>
+    </div>
+    <hr>
+    <div class="field row">
+      <label for="statePollingInterval" data-i18n="settings.statePollingInterval"></label>
+      <input id="statePollingInterval" type="number" value="" />
+    </div>
+    <div id="ceApiPanel" class="field row" style="display: none;">
+      <label for="ceApiKey" data-i18n="settings.ceApiKey"></label>
+      <input style="font-size:small;" id="ceApiKey" type="text" value="" />
+      <div style="font-size:xx-small;" data-i18n="settings.ceApiKeyInfo"></div>
+    </div>
+  </fieldset>
+  <fieldset style="background-color: rgb(255, 252, 223);">
+    <div class="field row" align="right">
+      <table>
+        <tr>
+          <td>
+            <button id="save" style="width: 100%;" data-i18n="settings.saveSettings"></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div style="font-size:xx-small;" data-i18n="settings.saveSettingsInfo"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </fieldset>
+
+  <br/><h1 id="pageTitleContentLicense" data-i18n="settings.titleLicense"></h1>
+  <fieldset id="appRegPanel" style="display: none; background-color: rgb(248, 225, 255);">
+    <legend data-i18n="settings.appRegLabel"></legend>
+    <div style="font-size:xx-small;" data-i18n="settings.appRegInfo"></div>
+    <div class="field row">
+      <label for="appRegReqCode" data-i18n="settings.appRegReqCode"></label>
+      <input id="appRegReqCode" type="text" readonly value="" />
+    </div>
+    <div class="field row">
+      <label for="appRegEmail" data-i18n="settings.appRegEmail"></label>
+      <input id="appRegEmail" type="email" value="" />
+    </div>
+    <div class="field row">
+      <label for="appRegUnlock" data-i18n="settings.appRegUnlock"></label>
+      <input id="appRegUnlock" type="text" value="" />
+    </div>
+    <br />
+    <div class="field row" align="right">
+      <button id="appRegApply" class="right" data-i18n="settings.appRegApply"></button>
+    </div>
+  </fieldset>
+  <fieldset id="appRegistered" style="display: none;">
+    <div class="field row" data-i18n="settings.appRegistered"></div>
+  </fieldset>
+
+  <br/><h1 id="pageTitleContentHealth" data-i18n="settings.titleHealth"></h1>
+  <fieldset style="background-color: rgb(255, 252, 226);">
+    <legend data-i18n="settings.deviceList"></legend>
+    <div class="field row; table-layout:auto;">
+      <table style="width:100%; font-size:xx-small;border-spacing: 8px 2px;white-space:nowrap;" id="deviceTable">
+        <tr style="width:100%;">
+          <th onclick="sortTable('deviceTable', 0)" data-i18n="settings.deviceName"></th>
+          <th onclick="sortTable('deviceTable', 1)" data-i18n="settings.deviceProduct"></th>
+          <th onclick="sortTable('deviceTable', 2)" data-i18n="settings.deviceVersion"></th>
+          <th onclick="sortTable('deviceTable', 3)" data-i18n="settings.deviceID"></th>
+          <th onclick="sortTable('deviceTable', 3)" data-i18n="settings.deviceIP"></th>
+          <th onclick="sortTable('deviceTable', 4)" data-i18n="settings.deviceWifi"></th>
+        </tr>
+      </table>
+    </div>
+  </fieldset>
+  <fieldset style="background-color: rgb(255, 246, 226);">
+    <!--<legend data-i18n="settings.lifxErrorStats"></legend>-->
+    <div style="font-size:xx-small;" data-i18n="settings.lifxErrorStats"></div>
+    <div class="field row; table-layout:auto;">
+      <table style="width:100%; font-size:xx-small;border-spacing: 8px 2px;white-space:nowrap;">
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorStatsGetState"></td>
+          <td id="errstatgetstate"></td>
+        </tr>
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorStatsGetWifi"></td>
+          <td id="errstatgetwifi"></td>
+        </tr>
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorStatsGetColorZones"></td>
+          <td id="errstatgetcolorzones"></td>
+        </tr>
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorStatsColorZones"></td>
+          <td id="errstatcolorzones"></td>
+        </tr>
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorStatsColor"></td>
+          <td id="errstatcolor"></td>
+        </tr>
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorStatsOnOff"></td>
+          <td id="errstatonoff"></td>
+        </tr>
+        <tr style="width:100%;">
+          <td data-i18n="settings.lifxErrorGetRelay"></td>
+          <td id="errstatgetrelay"></td>
+        </tr>
+      </table>
+    </div>
+  </fieldset>
+  <script type="text/javascript">
+    var tcCount = 0;
+    function sortTable(tableName, n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById(tableName);
+      switching = true;
+      // Set the sorting direction to ascending:
+      dir = "asc";
+      /* Make a loop that will continue until
+      no switching has been done: */
+      while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+          // Start by saying there should be no switching:
+          shouldSwitch = false;
+          /* Get the two elements you want to compare,
+          one from current row and one from the next: */
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          /* Check if the two rows should switch place,
+          based on the direction, asc or desc: */
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              // If so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              // If so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          /* If a switch has been marked, make the switch
+          and mark that a switch has been done: */
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          // Each time a switch is done, increase this count by 1:
+          switchcount++;
+        } else {
+          /* If no switching has been done AND the direction is "asc",
+          set the direction to "desc" and run the while loop again. */
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
+    function refreshDeviceList() {
+      var deviceTable = document.getElementById('deviceTable');
+      Homey.api('GET', '/getErrorRates', null, function (err, errorInfoObject) {
+        document.getElementById('errstatgetstate').innerHTML = errorInfoObject.getState;
+        document.getElementById('errstatgetwifi').innerHTML = errorInfoObject.getWifiInfo;
+        document.getElementById('errstatgetcolorzones').innerHTML = errorInfoObject.getColorZones;
+        document.getElementById('errstatcolorzones').innerHTML = errorInfoObject.colorZones;
+        document.getElementById('errstatcolor').innerHTML = errorInfoObject.color;
+        document.getElementById('errstatonoff').innerHTML = errorInfoObject.onoff;
+        document.getElementById('errstatgetrelay').innerHTML = errorInfoObject.getRelayPower;
+      });
+      Homey.api('GET', '/getDeviceList', null, function (err, deviceInfoArray) {
+        if (err) return Homey.alert(err);
+        deviceInfoArray.forEach(function (device) {
+          var findRow = document.getElementById(device.data.id);
+          if (findRow) {
+            findRow.cells[0].innerHTML = device.data.name;
+            findRow.cells[1].innerHTML = device.data.product;
+            findRow.cells[2].innerHTML = device.data.productVersion;
+            findRow.cells[3].innerHTML = device.data.id;
+            findRow.cells[4].innerHTML = device.data.ip;
+            var iconCode = 'wifi_unknown';
+            if (device.data.wifi == '1') {
+              iconCode = 'wifi_bad';
+            } else if (device.data.wifi == '2') {
+              iconCode = 'wifi_meh';
+            } else if (device.data.wifi == '3') {
+              iconCode = 'wifi_not_bad';
+            } else if (device.data.wifi == '4') {
+              iconCode = 'wifi_good';
+            }
+            findRow.cells[5].innerHTML = '<img src="' + iconCode + '.svg" width="20" height="20" />';
+          } else {
+            var newRow = deviceTable.insertRow(1);
+            newRow.id = device.data.id;
+            var cellName = newRow.insertCell(0);
+            cellName.innerHTML = device.data.name;
+            var cellProduct = newRow.insertCell(1);
+            cellProduct.innerHTML = device.data.product;
+            var cellProductVer = newRow.insertCell(2);
+            cellProductVer.innerHTML = device.data.productVersion;
+            var cellID = newRow.insertCell(3);
+            cellID.innerHTML = device.data.id;
+            var cellIP = newRow.insertCell(4);
+            cellIP.innerHTML = device.data.ip;
+            var cellWifi = newRow.insertCell(5);
+            var iconCode = 'wifi_unknown';
+            if (device.data.wifi == 1) {
+              iconCode = 'wifi_bad';
+            } else if (device.data.wifi == 2) {
+              iconCode = 'wifi_meh';
+            } else if (device.data.wifi == 3) {
+              iconCode = 'wifi_not_bad';
+            } else if (device.data.wifi == 4) {
+              iconCode = 'wifi_good';
+            }
+            cellWifi.innerHTML = '<img src="' + iconCode + '.svg" width="20" height="20" />';
+          }
+        });
+      });
+    }
+    function refreshAppRegistration() {
+      Homey.api('GET', '/getRegStatus', null, function (err, regStatus) {
+        if (err) return;
+        if (regStatus.RegEnabled === true) {
+          document.getElementById('appRegEmail').value = regStatus.RegMail;
+          if (regStatus.Registered === 0) {
+            document.getElementById('appRegPanel').style = 'display: none;';
+            document.getElementById('appRegistered').style = 'display: block; background-color: rgb(224, 255, 221);';
+            // Current Reg. Specifics
+            document.getElementById('ceApiPanel').style = 'display: block;';
+          } else {
+            document.getElementById('appRegPanel').style = 'display: block;';
+          }
+          if (regStatus.Registered === 2) Homey.alert(Homey.__('settings.appRegFailed'));
+        }
+        document.getElementById('appRegReqCode').value = regStatus.RequestCode;
+      });
+    }
+    function onHomeyReady(Homey) {
+      refreshDeviceList();
+      sortTable('deviceTable', 0);
+      var deviceListRefreshTimer = setInterval(function () {
+        refreshDeviceList();
+      }, 5000);
+
+      refreshAppRegistration();
+      var regCommitBtn = document.getElementById('appRegApply');
+      regCommitBtn.addEventListener('click', function (e) {
+        regCommitBtn.disabled = true;
+        document.getElementById('appRegEmail').disabled = true;
+        document.getElementById('appRegUnlock').disabled = true;
+        regCommitBtn.innerHTML = Homey.__('settings.appRegApplyWait');
+        var rEmail = document.getElementById('appRegEmail').value;
+        var rKey = document.getElementById('appRegUnlock').value;
+        Homey.api('PUT', '/registration', { 'regMail': rEmail, 'regKey': rKey }, function (err, result) {
+          regCommitBtn.disabled = false;
+          document.getElementById('appRegEmail').disabled = false;
+          document.getElementById('appRegUnlock').disabled = false;
+          regCommitBtn.innerHTML = Homey.__('settings.appRegApply');
+          if (err) return Homey.alert(err);
+          if (result.regStatus != 0) {
+            Homey.alert(Homey.__('settings.appRegFailed'), 'error');
+          } else {
+            Homey.alert(Homey.__('settings.appRegistered', 'info'));
+            refreshAppRegistration();
+          }
+        });
+      });
+
+      var cloudApiTokenElement = document.getElementById('cloudApiToken');
+      Homey.get('cloudApiToken', function (err, cloudApiToken) {
+        if (err) return Homey.alert(err);
+        cloudApiTokenElement.value = cloudApiToken;
+      });
+
+      var statePollingIntervalElement = document.getElementById('statePollingInterval');
+      Homey.get('statePollingInterval', function (err, statePollingInterval) {
+        if (err) return Homey.alert(err);
+        statePollingIntervalElement.value = statePollingInterval;
+      });
+
+      var defaultTransitionDurationElement = document.getElementById('defaultTransitionDuration');
+      Homey.get('defaultTransitionDuration', function (err, defaultTransitionDuration) {
+        if (err) return Homey.alert(err);
+        defaultTransitionDurationElement.value = defaultTransitionDuration;
+      });
+
+      var ceApiKeyElement = document.getElementById('ceApiKey');
+      Homey.get('ceEditorKey', function (err, ceApiKey) {
+        if (err) return Homey.alert(err);
+        ceApiKeyElement.value = ceApiKey;
+      });
+
+      var logicBehaviorElement = document.getElementById('logicBehavior');
+      Homey.get('logicBehavior', function (err, logicState) {
+        if (err) return Homey.alert(err);
+        if (logicState == null) logicState = 'Athom';
+        logicBehaviorElement.value = logicState;
+      });
+
+      var kelvinBehaviorElement = document.getElementById('kelvinBehavior');
+      Homey.get('kelvinBehavior', function (err, logicState) {
+        if (err) return Homey.alert(err);
+        if (logicState == null) logicState = 'LIFX';
+        kelvinBehaviorElement.value = logicState;
+      });
+
+      var saveElement = document.getElementById('save');
+
+      saveElement.addEventListener('click', function (e) {
+        var Polling = parseInt(statePollingIntervalElement.value);
+        if (isNaN(Polling)) {
+          Homey.alert(Homey.__("settings.errorPollingValue"), 'error');
+          return;
+        } else if (Polling < 5000 || Polling > 60000) {
+          Homey.alert(Homey.__("settings.errorPollingValue"), 'error');
+          return;
+        }
+        var Duration = parseInt(defaultTransitionDurationElement.value);
+        if (isNaN(Duration)) {
+          Homey.alert(Homey.__("settings.errorDurationValue"), 'error');
+          return;
+        }
+        var ceEditorKeyElement = document.getElementById('ceApiKey');
+        Homey.set('ceEditorKey', ceEditorKeyElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+        Homey.set('logicBehavior', logicBehaviorElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+        Homey.set('kelvinBehavior', kelvinBehaviorElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+        Homey.set('statePollingInterval', statePollingIntervalElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+        Homey.set('statePollingInterval', statePollingIntervalElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+        Homey.set('defaultTransitionDuration', defaultTransitionDurationElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+        Homey.set('cloudApiToken', cloudApiTokenElement.value, function (err) {
+          if (err) return Homey.alert(err);
+        });
+
+        Homey.alert(Homey.__("settings.infoSettingsSaved"), 'info');
+      });
+      // Tell Homey we're ready to be displayed
+      Homey.ready();
+    }
+  </script>
+</body>
+
+</html>

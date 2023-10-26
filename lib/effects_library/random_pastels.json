@@ -1,0 +1,43 @@
+{
+    "Name": "Random Pastel Colors",
+    "Looped": true,
+    "IgnorePlayed": true,
+    "InitCmds": [],
+    "InitLinger": 0,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 0,
+                    "Color": {
+                        "H": 0,
+                        "S": 15,
+                        "B": null,
+                        "K": null
+                    },
+                    "Trans": true,
+                    "Rep": 1,
+                    "Skew": 0.5,
+                    "Wave": 0,
+                    "Len": 2000,
+                    "ColorRndMode": 2,
+                    "ColorMax": {
+                        "H": 360,
+                        "S": 50,
+                        "B": null,
+                        "K": null
+                    },
+                    "LenMax": 10000,
+                    "LenMode": 2
+                }
+            ],
+            "Linger": 5000,
+            "LingerMax": 10000,
+            "RndNext": false,
+            "RndBlock": false,
+            "Played": false
+        }
+    ]
+}

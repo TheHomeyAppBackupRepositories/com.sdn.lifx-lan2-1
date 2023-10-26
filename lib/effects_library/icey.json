@@ -1,0 +1,44 @@
+{
+    "Name": "Icy Lights",
+    "Looped": true,
+    "IgnorePlayed": true,
+    "InitCmds": [
+        {
+            "Zone": 0,
+            "AllZ": true,
+            "Type": 0,
+            "Color": "#5555ff",
+            "Len": 1000
+        }
+    ],
+    "InitLinger": 1200,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 0,
+                    "Color": {
+                        "H": null,
+                        "S": 25,
+                        "B": null,
+                        "K": null
+                    },
+                    "ColorMax": {
+                        "H": null,
+                        "S": 100,
+                        "B": null,
+                        "K": null
+                    },
+                    "ColorRndMode": 1,
+                    "Len": 500
+                }
+            ],
+            "Linger": 100,
+            "RndNext": false,
+            "RndBlock": false,
+            "Played": false
+        }
+    ]
+}

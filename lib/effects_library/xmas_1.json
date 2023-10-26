@@ -1,0 +1,81 @@
+{
+    "Name": "Xmas Lights",
+    "Looped": true,
+    "IgnorePlayed": true,
+    "InitCmds": [
+        {
+            "Zone": 0,
+            "AllZ": true,
+            "Type": 0,
+            "Color": "#ff0000",
+            "Len": 1000
+        }
+    ],
+    "InitLinger": 1000,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 0,
+                    "Color": "#ff0000",
+                    "Len": 500
+                }
+            ],
+            "Linger": 1000,
+            "LingerMax": 3000,
+            "RndNext": true,
+            "RndBlock": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 0,
+                    "Color": "#0000ff",
+                    "Len": 500
+                }
+            ],
+            "Linger": 1000,
+            "LingerMax": 3000,
+            "RndNext": true,
+            "RndBlock": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 0,
+                    "Color": "#00ff00",
+                    "Len": 500
+                }
+            ],
+            "Linger": 1000,
+            "LingerMax": 3000,
+            "RndNext": true,
+            "RndBlock": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 0,
+                    "Color": "#ffff00",
+                    "Len": 500
+                }
+            ],
+            "Linger": 1000,
+            "LingerMax": 3000,
+            "RndNext": true,
+            "RndBlock": false,
+            "Played": false
+        }
+    ]
+}

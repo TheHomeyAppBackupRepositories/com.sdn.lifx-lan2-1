@@ -1,0 +1,105 @@
+{
+    "Name": "Twinkle",
+    "Looped": true,
+    "IgnorePlayed": true,
+    "InitCmds": [],
+    "InitLinger": 500,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 1,
+                    "Trans": true,
+                    "Len": 100,
+                    "Rep": 2,
+                    "Skew": 0.8,
+                    "Wave": 2,
+                    "Color": {
+                        "H": null,
+                        "S": 0,
+                        "B": 100,
+                        "K": 0
+                    }
+                }
+            ],
+            "Linger": 50,
+            "LingerMax": 5000,
+            "RndNext": true,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 1,
+                    "Trans": true,
+                    "Len": 100,
+                    "Rep": 2,
+                    "Skew": 0.8,
+                    "Wave": 2,
+                    "Color": {
+                        "H": null,
+                        "S": 0,
+                        "B": 100,
+                        "K": 0
+                    }
+                }
+            ],
+            "Linger": 50,
+            "LingerMax": 5000,
+            "RndNext": true,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 1,
+                    "Trans": true,
+                    "Len": 100,
+                    "Rep": 2,
+                    "Skew": 0.8,
+                    "Wave": 2,
+                    "Color": {
+                        "H": null,
+                        "S": 0,
+                        "B": 100,
+                        "K": 0
+                    }
+                }
+            ],
+            "Linger": 2000,
+            "LingerMax": 10000,
+            "RndNext": true,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": -1,
+                    "AllZ": false,
+                    "Type": 1,
+                    "Trans": true,
+                    "Len": 100,
+                    "Rep": 1,
+                    "Skew": 0.8,
+                    "Wave": 2,
+                    "Color": {
+                        "H": null,
+                        "S": 0,
+                        "B": 100,
+                        "K": 0
+                    }
+                }
+            ],
+            "Linger": 50,
+            "LingerMax": 5000,
+            "RndNext": true,
+            "Played": false
+        }
+    ]
+}

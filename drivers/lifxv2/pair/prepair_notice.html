@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        Homey.setTitle(Homey.__('pairing.prepairNoticeTitle'));
+    </script>
+    <style>
+        body {
+            color: #222222;
+            font-weight: bold;
+            /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
+        }
+
+        .glow {
+            font-size: 40px;
+            color: #333333;
+            text-align: center;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3d00e6, 0 0 40px #3d00e6, 0 0 50px #3d00e6, 0 0 60px #3d00e6, 0 0 70px #3d00e6;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #744dff, 0 0 40px #744dff, 0 0 50px #744dff, 0 0 60px #744dff, 0 0 70px #744dff, 0 0 80px #744dff;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #3d00e6, 0 0 40px #3d00e6, 0 0 50px #3d00e6, 0 0 60px #3d00e6, 0 0 70px #3d00e6;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #744dff, 0 0 40px #744dff, 0 0 50px #744dff, 0 0 60px #744dff, 0 0 70px #744dff, 0 0 80px #744dff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainPanel">
+        <br />
+        <br />
+        <br />
+        <br />
+        <h1 class="glow">LIFX (LAN)</h1>
+    </div>
+    <br />
+    <div style="font-size: large;" data-i18n="pairing.prepairNotice"></div>
+    <br />
+    <hr />
+    <div style="font-size: large;" data-i18n="pairing.prepairNotice2"></div>
+    <br />
+    <hr />
+    <div style="font-size: large;" data-i18n="pairing.prepairNotice3"></div>
+</body>
+
+</html>

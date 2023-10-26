@@ -1,0 +1,93 @@
+{
+    "Name": "Alert: Police",
+    "Looped": true,
+    "IgnorePlayed": true,
+    "InitCmds": [],
+    "InitLinger": 0,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 0,
+                    "Color": "#ff0000",
+                    "Len": 500
+                }
+            ],
+            "Linger": 550,
+            "LingerMax": null,
+            "RndNext": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 0,
+                    "Color": "#0000ff",
+                    "Len": 500
+                }
+            ],
+            "Linger": 550,
+            "LingerMax": null,
+            "RndNext": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 0,
+                    "Color": "#ff0000",
+                    "Len": 500
+                }
+            ],
+            "Linger": 550,
+            "LingerMax": null,
+            "RndNext": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 0,
+                    "Color": "#0000ff",
+                    "Len": 500
+                }
+            ],
+            "Linger": 550,
+            "LingerMax": null,
+            "RndNext": false,
+            "Played": false
+        },
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 1,
+                    "Trans": true,
+                    "Len": 150,
+                    "Rep": 5,
+                    "Skew": 0.8,
+                    "Wave": 2,
+                    "Color": {
+                        "H": null,
+                        "S": 0,
+                        "B": 100,
+                        "K": 1
+                    }
+                }
+            ],
+            "Linger": 800,
+            "LingerMax": null,
+            "RndNext": false,
+            "Played": false
+        }
+   ]
+}

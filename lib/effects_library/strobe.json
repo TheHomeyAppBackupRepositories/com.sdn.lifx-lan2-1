@@ -1,0 +1,46 @@
+{
+    "Name": "Strobe",
+    "Looped": false,
+    "IgnorePlayed": true,
+    "InitCmds": [
+        {
+            "Zone": 0,
+            "AllZ": true,
+            "Type": 0,
+            "Color": {
+                "H": null,
+                "S": 0,
+                "B": 0,
+                "K": 0
+            },
+            "Len": 50
+        }
+    ],
+    "InitLinger": 100,
+    "Choreo": [
+        {
+            "Cmds": [
+                {
+                    "Zone": 0,
+                    "AllZ": true,
+                    "Type": 1,
+                    "Trans": true,
+                    "Len": 100,
+                    "Rep": 60,
+                    "Skew": 0.4,
+                    "Wave": 4,
+                    "Color": {
+                        "H": null,
+                        "S": 0,
+                        "B": 100,
+                        "K": 0
+                    }
+                }
+            ],
+            "Linger": 6000,
+            "LingerMax": null,
+            "RndNext": false,
+            "Played": false
+        }
+   ]
+}
